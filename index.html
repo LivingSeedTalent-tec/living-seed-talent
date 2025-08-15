@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living Seed Talent - Consultoría de Recursos Humanos</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Brand Colors */
+        :root {
+            --primary-green: #2d5016;
+            --secondary-green: #4a7c2a;
+            --accent-brown: #b85c38;
+            --cream-bg: #f4f0e8;
+            --text-dark: #2d5016;
+            --text-brown: #b85c38;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(244, 240, 232, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.1);
+            border: 2px solid var(--primary-green);
+        }
+
+        .language-toggle button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0 5px;
+            padding: 8px 15px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            color: var(--primary-green);
+            font-family: 'Georgia', serif;
+        }
+
+        .language-toggle button.active {
+            background: var(--primary-green);
+            color: var(--cream-bg);
+        }
+
+        /* Header */
+        header {
+            background: var(--cream-bg);
+            color: var(--primary-green);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 20px rgba(45, 80, 22, 0.1);
+            border-bottom: 3px solid var(--primary-green);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--primary-green);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 60px;
+            position: relative;
+        }
+
+        /* Recreating the seed logo */
+        .seed-stem {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 25px;
+            background: var(--secondary-green);
+            border-radius: 2px;
+        }
+
+        .seed-base {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 15px;
+            background: var(--accent-brown);
+            border-radius: 50%;
+        }
+
+        .leaf-left {
+            position: absolute;
+            top: 8px;
+            left: 15px;
+            width: 20px;
+            height: 12px;
+            background: var(--primary-green);
+            border-radius: 0 100% 0 100%;
+            transform: rotate(-20deg);
+        }
+
+        .leaf-right {
+            position: absolute;
+            top: 15px;
+            right: 12px;
+            width: 18px;
+            height: 10px;
+            background: var(--secondary-green);
+            border-radius: 100% 0 100% 0;
+            transform: rotate(25deg);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-brown);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(244, 240, 232, 0.95) 0%, rgba(244, 240, 232, 0.8) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f4f0e8" width="1200" height="600"/><circle fill="%232d5016" opacity="0.05" cx="200" cy="150" r="30"/><circle fill="%234a7c2a" opacity="0.05" cx="800" cy="100" r="50"/><circle fill="%23b85c38" opacity="0.05" cx="1000" cy="300" r="40"/><circle fill="%232d5016" opacity="0.03" cx="400" cy="400" r="60"/></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-logo {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-logo-icon {
+            width: 120px;
+            height: 140px;
+            position: relative;
+        }
+
+        .hero-logo-icon .seed-stem {
+            height: 60px;
+            width: 8px;
+        }
+
+        .hero-logo-icon .seed-base {
+            width: 50px;
+            height: 30px;
+            bottom: -10px;
+        }
+
+        .hero-logo-icon .leaf-left {
+            width: 40px;
+            height: 25px;
+            top: 15px;
+            left: 25px;
+        }
+
+        .hero-logo-icon .leaf-right {
+            width: 35px;
+            height: 20px;
+            top: 30px;
+            right: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .hero-tagline {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-brown);
+            font-style: italic;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.4s both;
+            color: var(--text-dark);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 18px 35px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-family: 'Georgia', serif;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-green);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-brown);
+            border: 2px solid var(--accent-brown);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-brown);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(184, 92, 56, 0.3);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .section-title p {
+            font-size: 1.3rem;
+            color: var(--accent-brown);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--cream-bg);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(45, 80, 22, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-green) 0%, var(--secondary-green) 50%, var(--accent-brown) 100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(45, 80, 22, 0.15);
+            border-color: var(--primary-green);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .service-card p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: var(--primary-green);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .philosophy h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+
+        .philosophy-quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--cream-bg);
+            margin-bottom: 1.5rem;
+        }
+
+        .philosophy p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--cream-bg);
+            padding: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem 1rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            color: var(--accent-brown);
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .contact-info p {
+            color: var(--text-dark);
+            margin-bottom: 2.5rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-section {
+            background: var(--cream-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 3px solid var(--primary-green);
+        }
+
+        .form-section h4 {
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .form-section p {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .form-section p::before {
+            content: '🌱';
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-tagline {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--cream-bg);
+            margin-bottom: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        /* Language Content */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .logo-container {
+                gap: 10px;
+            }
+
+            .logo-text {
+                font-size: 1.4rem;
+            }
+
+            .hero-logo-icon {
+                width: 80px;
+                height: 100px;
+            }
+
+            .hero-logo-icon .seed-stem {
+                height: 40px;
+                width: 6px;
+            }
+
+            .hero-logo-icon .seed-base {
+                width: 35px;
+                height: 20px;
+                bottom: -8px;
+            }
+
+            .hero-logo-icon .leaf-left {
+                width: 25px;
+                height: 15px;
+                top: 10px;
+                left: 18px;
+            }
+
+            .hero-logo-icon .leaf-right {
+                width: 22px;
+                height: 12px;
+                top: 20px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button onclick="switchLanguage('es')" id="btn-es" class="active">ES</button>
+        <button onclick="switchLanguage('en')" id="btn-en">EN</button>
+    </div>
+
+    <!-- Spanish Content -->
+    <div id="spanish-content" class="lang-content active">
+        <!-- Header -->
+        <header>
+            <nav class="container">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <div class="seed-stem"></div>
+                        <div class="seed-base"></div>
+                        <div class="leaf-left"></div>
+                        <div class="leaf-right"></div>
+                    </div>
+                    <div class="logo-text">Living Seed Talent</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#filosofia">Sobre Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-logo">
+                        <div class="hero-logo-icon">
+                            <div class="seed-stem"></div>
+                            <div class="seed-base"></div>
+                            <div class="leaf-left"></div>
+                            <div class="leaf-right"></div>
+                        </div>
+                    </div>
+                    <h1>Living Seed Talent</h1>
+                    <div class="hero-tagline">Cada persona es una semilla.<br>Reclutar es sembrar.</div>
+                    <p>Conectamos talento con oportunidades reales de crecimiento. Diseñamos procesos de selección personalizados, estratégicos y humanos, que alinean vocación, valores y visión de futuro.</p>
+                    <div class="cta-buttons">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3vOlB_vkwdf_UhPODIct1GjQddh6DhQWe7A1M9gCo3ZTmig/viewform" target="_blank" class="btn btn-primary">Busco Empleo</a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3vOlB_vkwdf_UhPODIct1GjQddh6DhQWe7A1M9gCo3ZTmig/viewform" target="_blank" class="btn btn-secondary">Busco Personal</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="servicios">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Cultivamos Talento</h2>
+                    <p>Plantamos las semillas del éxito profesional</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">💻</div>
+                        <h3>Perfiles tecnológicos</h3>
+                        <p>Reclutamos desde programadores y analistas hasta líderes de producto o perfiles de innovación. Nos adaptamos al lenguaje y los tiempos del mundo tech.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📈</div>
+                        <h3>Perfiles comerciales y estratégicos</h3>
+                        <p>Encontramos profesionales orientados a resultados, con habilidades en ventas, desarrollo de negocio y liderazgo comercial.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚖️</div>
+                        <h3>Perfiles jurídicos y administrativos</h3>
+                        <p>Conectamos empresas con perfiles legales, compliance, recursos humanos y back-office que combinan rigor y visión organizativa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section class="philosophy" id="filosofia">
+            <div class="container">
+                <h2>Nuestra Filosofía</h2>
+                <div class="philosophy-quote">"Cada persona es una semilla. Reclutar es sembrar."</div>
+                <p>Creemos que cada profesional tiene un potencial único esperando las condiciones adecuadas para florecer. Nuestro trabajo no es solo conectar candidatos con empresas, sino cultivar relaciones duraderas que permitan el crecimiento mutuo. Plantamos semillas de oportunidad y las nutrimos hasta ver florecer carreras exitosas y equipos prósperos.</p>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Semillas Plantadas<br>(Candidatos Colocados)</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>150+</h3>
+                        <p>Jardines Florecientes<br>(Empresas Satisfechas)</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>95%</h3>
+                        <p>Tasa de Germinación<br>(Éxito en Colocaciones)</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24h</h3>
+                        <p>Tiempo de Respuesta<br>(Primera Atención)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contacto">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>¿Listo para Sembrar?</h3>
+                        <p>Ya seas una empresa buscando cultivar un equipo excepcional o un profesional listo para plantar las raíces de tu carrera, estamos aquí para ayudarte a crecer. Completa nuestro formulario y comenzemos a sembrar juntos.</p>
+                        <div class="contact-buttons">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3vOlB_vkwdf_UhPODIct1GjQddh6DhQWe7A1M9gCo3ZTmig/viewform" target="_blank" class="btn btn-primary">Formulario para Empresas</a>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3vOlB_vkwdf_UhPODIct1GjQddh6DhQWe7A1M9gCo3ZTmig/viewform" target="_blank" class="btn btn-secondary">Formulario para Candidatos</a>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h4>¿Por qué crecer con nosotros?</h4>
+                        <p>Especialización exclusiva en reclutamiento</p>
+                        <p>Red extensa de profesionales cultivados</p>
+                        <p>Proceso de selección que nutre el potencial</p>
+                        <p>Seguimiento post-siembra (post-contratación)</p>
+                        <p>Consultoría que fertiliza el crecimiento</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-tagline">
+                        <span id="footer-tagline-es">Cada persona es una semilla. Reclutar es sembrar.</span>
+                        <span id="footer-tagline-en" style="display:none;">Every person is a seed. Recruiting is sowing.</span>
+                    </div>
+                    <div class="footer-links" style="margin-bottom: 1rem;">
+                        <a href="https://www.linkedin.com/company/living-seed-talent/" target="_blank" style="color:white; margin-right: 20px; text-decoration:underline;">
+                            LinkedIn
+                        </a>
+                        <a href="mailto:info@livingseedtalent.com" style="color:white; margin-right: 20px; text-decoration:underline;">
+                            Livingseedtalent@gmail.com
+                        </a>
+                        <span style="color:white;">
+                            <span class="material-icons" style="vertical-align:middle;">location_on</span>
+                            Barcelona, Spain
+                        </span>
+                    </div>
+                    <p style="margin:0;">&copy; 2025 Living Seed Talent. Todos los derechos reservados. | Especialistas en Reclutamiento</p>
+                    <p id="footer-copyright-en" style="margin:0; display:none;">
+                        &copy; 2025 Living Seed Talent. All rights reserved. | Recruitment Specialists
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- English Content -->
+    <div id="english-content" class="lang-content">
+        <!-- Header -->
+        <header>
+            <nav class="container">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <div class="seed-stem"></div>
+                        <div class="seed-base"></div>
+                        <div class="leaf-left"></div>
+                        <div class="leaf-right"></div>
+                    </div>
+                    <div class="logo-text">Living Seed Talent</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#philosophy">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-logo">
+                        <div class="hero-logo-icon">
+                            <div class="seed-stem"></div>
+                            <div class="seed-base"></div>
+                            <div class="leaf-left"></div>
+                            <div class="leaf-right"></div>
+                        </div>
+                    </div>
+                    <h1>Living Seed Talent</h1>
+                    <div class="hero-tagline">Every person is a seed.<br>Recruiting is sowing.</div>
+                    <p>Recruitment specialists. We cultivate connections that grow both professionals and companies in various sector.</p>
+                    <div class="cta-buttons">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3vOlB_vkwdf_UhPODIct1GjQddh6DhQWe7A1M9gCo3ZTmig/viewform" target="_blank" class="btn btn-primary">Looking for Job</a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScuaq_dza1mCwygp_vNLoQPBS4XvAz9BG9YhNS4-q3GTPoo7g/viewform" target="_blank" class="btn btn-secondary">Need Staff</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>We Cultivate Talent</h2>
+                    <p>Planting seeds of professional success in the recruitement sector</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">💻</div>
+                        <h3>Tech & Digital Profiles</h3>
+                        <p>We recruit everyone from programmers and analysts to product leaders and innovation profiles. We speak the language of the tech world and move at its pace.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💼</div>
+                        <h3>Commercial & Strategic Profiles</h3>
+                        <p>We find results-driven professionals with strong skills in sales, business development, and commercial leadership.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚖️</div>
+                        <h3>Legal & Administrative Profiles</h3>
+                        <p>We connect companies with legal, compliance, HR, and back-office professionals who combine precision with organizational insight.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section class="philosophy" id="philosophy">
+            <div class="container">
+                <h2>About Us</h2>
+                <div class="philosophy-quote">"Every person is a seed. Recruiting is sowing."</div>
+                <p>We believe every professional has unique potential waiting for the right conditions to flourish. Our job isn't just connecting candidates with employers, but cultivating lasting relationships that enable mutual growth. We plant seeds of opportunity and nurture them until we see successful careers and thriving teams bloom.</p>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Seeds Planted<br>(Candidates Placed)</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>150+</h3>
+                        <p>Satisfied Companies</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>95%</h3>
+                        <p>Success Rate</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24h</h3>
+                        <p>Response Time</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Ready to Connect?</h3>
+                        <p>Whether you're a company looking for talent or a professional seeking new opportunities, we're here to help. Complete our form and we'll get in touch with you.</p>
+                        <div class="contact-buttons">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLScuaq_dza1mCwygp_vNLoQPBS4XvAz9BG9YhNS4-q3GTPoo7g/viewform" target="_blank" class="btn btn-primary">Company Form</a>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3vOlB_vkwdf_UhPODIct1GjQddh6DhQWe7A1M9gCo3ZTmig/viewform" target="_blank" class="btn btn-secondary">Candidate Form</a>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h4>Why Choose Us?</h4>
+                        <p>✓ Exclusive recruitment specialization</p>
+                        <p>✓ Extensive network of qualified professionals</p>
+                        <p>✓ Rigorous selection process</p>
+                        <p>✓ Post-hiring follow-up</p>
+                        <p>✓ Personalized consulting</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-tagline">
+                        <span id="footer-tagline-es">Cada persona es una semilla. Reclutar es sembrar.</span>
+                        <span id="footer-tagline-en" style="display:none;">Every person is a seed. Recruiting is sowing.</span>
+                    </div>
+                    <div class="footer-links" style="margin-bottom: 1rem;">
+                        <a href="https://www.linkedin.com/company/living-seed-talent/" target="_blank" style="color:white; margin-right: 20px; text-decoration:underline;">
+                            LinkedIn
+                        </a>
+                        <a href="mailto:info@livingseedtalent.com" style="color:white; margin-right: 20px; text-decoration:underline;">
+                            Livingseedtalent@gmail.com
+                        </a>
+                        <span style="color:white;">
+                            <span class="material-icons" style="vertical-align:middle;">location_on</span>
+                            Barcelona, Spain
+                        </span>
+                    </div>
+                    <p style="margin:0;">&copy; 2025 Living Seed Talent. Todos los derechos reservados. | Especialistas en Reclutamiento</p>
+                    <p id="footer-copyright-en" style="margin:0; display:none;">
+                        &copy; 2025 Living Seed Talent. All rights reserved. | Recruitment Specialists
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function updateFooterLanguage(lang) {
+            document.getElementById('footer-tagline-es').style.display = (lang === 'es') ? '' : 'none';
+            document.getElementById('footer-tagline-en').style.display = (lang === 'en') ? '' : 'none';
+            document.querySelector('footer p').style.display = (lang === 'es') ? '' : 'none';
+            document.getElementById('footer-copyright-en').style.display = (lang === 'en') ? '' : 'none';
+    }
+
+        function switchLanguage(lang) {
+            const spanishContent = document.getElementById('spanish-content');
+            const englishContent = document.getElementById('english-content');
+            const btnEs = document.getElementById('btn-es');
+            const btnEn = document.getElementById('btn-en');
+            updateFooterLanguage(lang);
+
+            if (lang === 'es') {
+                spanishContent.classList.add('active');
+                englishContent.classList.remove('active');
+                btnEs.classList.add('active');
+                btnEn.classList.remove('active');
+                document.documentElement.lang = 'es';
+                document.title = 'Living Seed Talent - Consultoría de Recursos Humanos HORECA';
+            } else {
+                englishContent.classList.add('active');
+                spanishContent.classList.remove('active');
+                btnEn.classList.add('active');
+                btnEs.classList.remove('active');
+                document.documentElement.lang = 'en';
+                document.title = 'Living Seed Talent - HORECA HR Consulting';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add fade-in animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.service-card, .stat-item, .contact-info, .form-section');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
