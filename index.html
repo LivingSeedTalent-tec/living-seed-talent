@@ -607,6 +607,81 @@
                 top: 20px;
                 right: 15px;
             }
+            /* --- New: Testimonials & Process --- */
+            .testimonials, .process {
+                padding: 100px 0;
+                background: white;
+            }
+            .testimonials .section-title h2,
+            .process .section-title h2 {
+                font-size: 2.4rem;
+            }
+            .testimonials-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 2rem;
+            }
+            .testimonial-card {
+                background: var(--cream-bg);
+                border: 3px solid var(--primary-green);
+                border-radius: 20px;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(45, 80, 22, 0.08);
+            }
+            .testimonial-card h3 {
+                color: var(--primary-green);
+                font-size: 1.25rem;
+                margin-bottom: .75rem;
+            }
+            .testimonial-card p {
+                font-size: 1.05rem;
+                line-height: 1.8;
+                color: var(--text-dark);
+            }
+            
+            .process-steps {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 2rem;
+                margin-top: 1rem;
+            }
+            .process-step {
+                background: var(--cream-bg);
+                border-left: 6px solid var(--accent-brown);
+                border-radius: 14px;
+                padding: 1.5rem 1.75rem;
+                box-shadow: 0 8px 24px rgba(45, 80, 22, 0.08);
+            }
+            .process-step h3 {
+                color: var(--primary-green);
+                margin-bottom: .5rem;
+                font-size: 1.2rem;
+            }
+            .process-step p {
+                font-size: 1.05rem;
+                line-height: 1.8;
+            }
+            
+            /* small helper so these also fade in on scroll */
+            .testimonial-card, .process-step { opacity: 0; transform: translateY(30px); }
+            .testimonial-card.fade-in, .process-step.fade-in { opacity: 1; transform: translateY(0); transition: .6s ease; }
+            
+            /* Mobile tweaks */
+            @media (max-width: 768px) {
+                .testimonials, .process { padding: 70px 0; }
+            }
+            .testimonial-photo {
+                width: 100%;
+                max-width: 180px;
+                height: auto;
+                border-radius: 50%;
+                margin-bottom: 1rem;
+                display: block;
+                object-fit: cover;
+                box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+                }
+
+                        
         }
     </style>
 </head>
@@ -633,6 +708,8 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
                     <li><a href="#filosofia">Sobre Nosotros</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
@@ -688,7 +765,87 @@
                 </div>
             </div>
         </section>
-
+        <!-- Testimonios -->
+        <section class="testimonials" id="testimonios">
+          <div class="container">
+            <div class="section-title">
+              <h2>Testimonios de Proyectos</h2>
+              <p>Historias reales de crecimiento compartido</p>
+            </div>
+        
+            <div class="testimonials-grid">
+              <div class="testimonial-card">
+                <img src="images/ana.jpg" alt="Ana Testimony Photo" class="testimonial-photo">
+                <h3>A. Un lugar para crecer</h3>
+                <p>
+                  Ana encontró un trabajo donde se siente valorada y motivada, mientras que su empresa
+                  descubrió talento comprometido capaz de crecer junto al equipo.
+                  Juntos están construyendo un entorno de aprendizaje y desarrollo continuo.
+                </p>
+              </div>
+        
+              <div class="testimonial-card">
+                <img src="images/john.jpg" alt="John Testimony Photo" class="testimonial-photo">
+                <h3>B. Ser valorado por quien eres</h3>
+                <p>
+                  John consiguió una posición hecha a su medida, y su empresa aprendió a incluir talento diverso
+                  que aporta ideas frescas. Ambos están creando un ambiente inclusivo y de cuidado, donde
+                  las habilidades de cada persona son valoradas.
+                </p>
+              </div>
+        
+              <div class="testimonial-card">
+                <img src="images/martha.jpg" alt="Martha Testimony Photo" class="testimonial-photo">
+                <h3>C. Equilibrio y motivación</h3>
+                <p>
+                  Martha encontró un trabajo que respeta sus valores y le permite crecer profesionalmente,
+                  mientras la empresa incorporó a una persona comprometida y motivada que aporta verdadero
+                  valor al equipo. Juntos construyen un espacio de confianza y desarrollo.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Cómo trabajamos -->
+        <section class="process" id="como-trabajamos">
+              <div class="container">
+                <div class="section-title">
+                  <h2>Cómo trabajamos</h2>
+                  <p>Un acompañamiento humano, honesto y efectivo</p>
+                </div>
+            
+                <div class="process-steps">
+                  <div class="process-step">
+                    <h3>1. Recibimos tu solicitud</h3>
+                    <p>
+                      A través de nuestro formulario, candidatos y empresas nos cuentan qué buscan. Ya sea
+                      una oportunidad profesional o un perfil que encaje en un equipo, damos el primer paso
+                      escuchando tu necesidad.
+                    </p>
+                  </div>
+            
+                  <div class="process-step">
+                    <h3>2. Escuchamos y comprendemos tu situación</h3>
+                    <p>
+                      No creemos en soluciones rápidas ni impersonales. Nos detenemos a entender tu historia,
+                      tus valores y lo que realmente necesitas. Solo así garantizamos un acompañamiento humano
+                      y auténtico.
+                    </p>
+                  </div>
+            
+                  <div class="process-step">
+                    <h3>3. Conectamos talento y oportunidades</h3>
+                    <p>
+                      Te ponemos en contacto con personas o empresas que comparten tu visión. Nuestro objetivo
+                      es crear vínculos sólidos, inclusivos y enriquecedores, que permitan crecer tanto a
+                      profesionales como a organizaciones.
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </section>
+        
         <!-- Philosophy Section -->
         <section class="philosophy" id="filosofia">
             <div class="container">
@@ -792,6 +949,8 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#how-we-work">How we work</a></li>
                     <li><a href="#philosophy">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -826,7 +985,7 @@
             <div class="container">
                 <div class="section-title">
                     <h2>We Cultivate Talent</h2>
-                    <p>Planting seeds of professional success in the recruitement sector</p>
+                    <p>Planting seeds of professional success in the recruitment sector</p>
                 </div>
                 <div class="services-grid">
                     <div class="service-card">
@@ -848,6 +1007,85 @@
             </div>
         </section>
 
+        <!-- Testimonials -->
+        <section class="testimonials" id="testimonials">
+          <div class="container">
+            <div class="section-title">
+              <h2>Project Testimonials</h2>
+              <p>Real stories of shared growth</p>
+            </div>
+        
+            <div class="testimonials-grid">
+              <div class="testimonial-card">
+                <img src="images/ana.jpg" alt="Ana Testimony Photo" class="testimonial-photo">
+                <h3>A. A place to grow</h3>
+                <p>
+                  Ana found a job where she feels valued and motivated, while her company discovered committed
+                  talent capable of growing alongside the team. Together they are building an environment of
+                  continuous learning and development.
+                </p>
+              </div>
+        
+              <div class="testimonial-card">
+                <img src="images/john.jpg" alt="John Testimony Photo" class="testimonial-photo">
+                <h3>B. Being valued for who you are</h3>
+                <p>
+                  John landed a position tailored to his skills, and his company discovered how to include
+                  diverse talent that brings fresh ideas. Both are creating an inclusive and nurturing
+                  environment where everyone's abilities are valued.
+                </p>
+              </div>
+        
+              <div class="testimonial-card">
+                <img src="images/martha.jpg" alt="Martha Testimony Photo" class="testimonial-photo">
+                <h3>C. Work–life balance and motivation</h3>
+                <p>
+                  Martha found a job that respects her values and allows her to grow professionally, while the
+                  company hired someone committed and motivated who brings real value to the team. Together they
+                  build a space of trust and development.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- How we work -->
+        <section class="process" id="how-we-work">
+          <div class="container">
+            <div class="section-title">
+              <h2>How we work</h2>
+              <p>Human, honest, and effective guidance</p>
+            </div>
+        
+            <div class="process-steps">
+              <div class="process-step">
+                <h3>1. We receive your application</h3>
+                <p>
+                  Through our application form, candidates and companies tell us what they're looking for. Whether
+                  it's a professional opportunity or a profile that fits into a team, we take the first step by
+                  listening to your needs.
+                </p>
+              </div>
+        
+              <div class="process-step">
+                <h3>2. We listen and understand your situation</h3>
+                <p>
+                  We don't believe in quick or impersonal solutions. We take the time to understand your story,
+                  your values, and what you really need. Only then can we guarantee humane and authentic support.
+                </p>
+              </div>
+        
+              <div class="process-step">
+                <h3>3. We connect talent and opportunities</h3>
+                <p>
+                  We connect you with people or companies that share your vision. Our goal is to create strong,
+                  inclusive, and enriching relationships that enable both professionals and organizations to grow.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
         <!-- Philosophy Section -->
         <section class="philosophy" id="philosophy">
             <div class="container">
@@ -911,7 +1149,7 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-tagline">
-                        <span id="footer-tagline-es">Cada persona es una semilla. Reclutar es sembrar.</span>
+                        <span id="footer-tagline-es">Every person is a seed. Recruiting is sowing.</span>
                         <span id="footer-tagline-en" style="display:none;">Every person is a seed. Recruiting is sowing.</span>
                     </div>
                     <div class="footer-links" style="margin-bottom: 1rem;">
@@ -926,7 +1164,7 @@
                             Barcelona, Spain
                         </span>
                     </div>
-                    <p style="margin:0;">&copy; 2025 Living Seed Talent. Todos los derechos reservados. | Especialistas en Reclutamiento</p>
+                    <p style="margin:0;">&copy; 2025 Living Seed Talent. All Rights Reserved. | Recruitment Specialists</p>
                     <p id="footer-copyright-en" style="margin:0; display:none;">
                         &copy; 2025 Living Seed Talent. All rights reserved. | Recruitment Specialists
                     </p>
